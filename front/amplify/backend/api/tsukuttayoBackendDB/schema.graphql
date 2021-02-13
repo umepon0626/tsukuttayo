@@ -1,0 +1,63 @@
+type Portfolio @model @searchable {
+  id: ID!
+  users: [UserPortfolio]!
+    @connection(keyName: "byPortfolioOwner", fields: ["id"])
+  likes: [UserLikePortfolio]
+    @connection(keyName: "byPortfolioLike", fields: ["id"])
+  title: String!
+  imageURLs: [String]!
+  portfolioURL: String!
+  description: String!
+  comments: [Comment] @connection(keyName: "byPortfolio", fields: ["id"])
+}
+type User @model @searchable {
+  id: ID!
+  codeName: String!
+  profile: String!
+  roles: [Role]!
+  portfolios: [UserPortfolio]
+    @connection(keyName: "byUserPortfolio", fields: ["id"])
+  likes: [UserLikePortfolio]
+    @connection(keyName: "byUserPortfolioLike", fields: ["id"])
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type PortfolioOwner
+  @model
+  @key(name: "byUserPortfolio", fields: ["userID", "portfolioID"])
+  @key(name: "byPortfolioOwner", fields: ["portfolioID", "userID"]) {
+  id: ID!
+  userID: ID!
+  portfolioID: ID!
+  user: User! @connection(fields: ["userID"])
+  portfolio: Portfolio! @connection(fields: ["PortfolioID"])
+}
+
+type UserLikePortfolio
+  @model
+  @key(name: "byUserPortfolioLike", fields: ["userID", "portfolioID"])
+  @key(name: "byPortfolioLike", fields: ["portfolioID", "userID"]) {
+  id: ID!
+  userID: ID!
+  portfolioID: ID!
+  user: User! @connection(fields: ["userID"])
+  portfolio: Portfolio! @connection(fields: ["PortfolioID"])
+}
+
+enum Role {
+  ENGINEER
+  DESIGNER
+  INVESTOR
+  MANAGER
+  RECRUITER
+}
+
+type Comment
+  @model
+  @key(name: "byPortfolio", fields: ["portfolioId", "content", "userID"]) {
+  id: ID!
+  portfolioID: ID!
+  userId: ID!
+  content: String!
+}
