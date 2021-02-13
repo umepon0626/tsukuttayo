@@ -1,0 +1,96 @@
+type Portfolio
+  @model
+  @searchable
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "user", operations: [create, update, delete] }
+    ]
+  ) {
+  id: ID!
+  users: [PortfolioOwner]!
+    @connection(keyName: "byPortfolioOwner", fields: ["id"])
+  likes: [UserLikePortfolio]
+    @connection(keyName: "byPortfolioLike", fields: ["id"])
+  title: String!
+  imageURLs: [String]!
+  portfolioURL: String!
+  description: String!
+  comments: [Comment] @connection(keyName: "byPortfolio", fields: ["id"])
+}
+type User
+  @model
+  @searchable
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "user", operations: [create, update, delete] }
+    ]
+  ) {
+  id: ID!
+  codeName: String!
+  profile: String!
+  roles: [Role]!
+  portfolios: [PortfolioOwner]
+    @connection(keyName: "byUserPortfolio", fields: ["id"])
+  likes: [UserLikePortfolio]
+    @connection(keyName: "byUserPortfolioLike", fields: ["id"])
+  comments: [Comment] @connection(keyName: "byUser", fields: ["id"])
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type PortfolioOwner
+  @model
+  @key(name: "byUserPortfolio", fields: ["userID", "portfolioID"])
+  @key(name: "byPortfolioOwner", fields: ["portfolioID", "userID"])
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "user", operations: [create, update, delete] }
+    ]
+  ) {
+  id: ID!
+  userID: ID!
+  portfolioID: ID!
+  user: User! @connection(fields: ["userID"])
+  portfolio: Portfolio! @connection(fields: ["portfolioID"])
+}
+
+type UserLikePortfolio
+  @model
+  @key(name: "byUserPortfolioLike", fields: ["userID", "portfolioID"])
+  @key(name: "byPortfolioLike", fields: ["portfolioID", "userID"])
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "user", operations: [create, update, delete] }
+    ]
+  ) {
+  id: ID!
+  userID: ID!
+  portfolioID: ID!
+  user: User! @connection(fields: ["userID"])
+  portfolio: Portfolio! @connection(fields: ["portfolioID"])
+}
+
+type Comment
+  @model
+  @key(name: "byPortfolio", fields: ["portfolioID", "content", "userID"])
+  @key(name: "byUser", fields: ["userID", "content", "portfolioID"])
+  @auth(
+    rules: [
+      { allow: owner, ownerField: "user", operations: [create, update, delete] }
+    ]
+  ) {
+  id: ID!
+  portfolioID: ID!
+  userID: ID!
+  portfolio: Portfolio! @connection(fields: ["portfolioID"])
+  user: User! @connection(fields: ["userID"])
+  content: String!
+}
+
+enum Role {
+  ENGINEER
+  DESIGNER
+  INVESTOR
+  MANAGER
+  RECRUITER
+}

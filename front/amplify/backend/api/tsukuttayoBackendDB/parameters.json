@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "tsukuttayoBackendDB",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authfrontd43c67dd",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
