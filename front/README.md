@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Tsukuttayo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[これは何？](https://www.notion.so/Tsukuttayo-fc232b6aae184bf8905b63306684b8b7#7f655d82ce0846db9f4baf4203052e08)
 
 ## Available Scripts
 
