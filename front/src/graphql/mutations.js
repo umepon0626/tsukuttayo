@@ -1,97 +1,42 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createBlog = /* GraphQL */ `
-  mutation CreateBlog(
-    $input: CreateBlogInput!
-    $condition: ModelBlogConditionInput
+export const createPortfolio = /* GraphQL */ `
+  mutation CreatePortfolio(
+    $input: CreatePortfolioInput!
+    $condition: ModelPortfolioConditionInput
   ) {
-    createBlog(input: $input, condition: $condition) {
+    createPortfolio(input: $input, condition: $condition) {
       id
-      name
-      posts {
+      users {
         items {
           id
-          title
-          blogID
+          userID
+          portfolioID
           createdAt
           updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateBlog = /* GraphQL */ `
-  mutation UpdateBlog(
-    $input: UpdateBlogInput!
-    $condition: ModelBlogConditionInput
-  ) {
-    updateBlog(input: $input, condition: $condition) {
-      id
-      name
-      posts {
+      likes {
         items {
           id
-          title
-          blogID
+          userID
+          portfolioID
           createdAt
           updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteBlog = /* GraphQL */ `
-  mutation DeleteBlog(
-    $input: DeleteBlogInput!
-    $condition: ModelBlogConditionInput
-  ) {
-    deleteBlog(input: $input, condition: $condition) {
-      id
-      name
-      posts {
-        items {
-          id
-          title
-          blogID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createPost = /* GraphQL */ `
-  mutation CreatePost(
-    $input: CreatePostInput!
-    $condition: ModelPostConditionInput
-  ) {
-    createPost(input: $input, condition: $condition) {
-      id
       title
-      blogID
-      blog {
-        id
-        name
-        posts {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      imageURLs
+      portfolioURL
+      description
       comments {
         items {
           id
-          postID
+          portfolioID
+          userID
           content
           createdAt
           updatedAt
@@ -100,31 +45,46 @@ export const createPost = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      user
     }
   }
 `;
-export const updatePost = /* GraphQL */ `
-  mutation UpdatePost(
-    $input: UpdatePostInput!
-    $condition: ModelPostConditionInput
+export const updatePortfolio = /* GraphQL */ `
+  mutation UpdatePortfolio(
+    $input: UpdatePortfolioInput!
+    $condition: ModelPortfolioConditionInput
   ) {
-    updatePost(input: $input, condition: $condition) {
+    updatePortfolio(input: $input, condition: $condition) {
       id
-      title
-      blogID
-      blog {
-        id
-        name
-        posts {
-          nextToken
+      users {
+        items {
+          id
+          userID
+          portfolioID
+          createdAt
+          updatedAt
         }
-        createdAt
-        updatedAt
+        nextToken
       }
+      likes {
+        items {
+          id
+          userID
+          portfolioID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      title
+      imageURLs
+      portfolioURL
+      description
       comments {
         items {
           id
-          postID
+          portfolioID
+          userID
           content
           createdAt
           updatedAt
@@ -133,36 +93,499 @@ export const updatePost = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      user
     }
   }
 `;
-export const deletePost = /* GraphQL */ `
-  mutation DeletePost(
-    $input: DeletePostInput!
-    $condition: ModelPostConditionInput
+export const deletePortfolio = /* GraphQL */ `
+  mutation DeletePortfolio(
+    $input: DeletePortfolioInput!
+    $condition: ModelPortfolioConditionInput
   ) {
-    deletePost(input: $input, condition: $condition) {
+    deletePortfolio(input: $input, condition: $condition) {
       id
-      title
-      blogID
-      blog {
-        id
-        name
-        posts {
-          nextToken
+      users {
+        items {
+          id
+          userID
+          portfolioID
+          createdAt
+          updatedAt
         }
-        createdAt
-        updatedAt
+        nextToken
       }
+      likes {
+        items {
+          id
+          userID
+          portfolioID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      title
+      imageURLs
+      portfolioURL
+      description
       comments {
         items {
           id
-          postID
+          portfolioID
+          userID
           content
           createdAt
           updatedAt
         }
         nextToken
+      }
+      createdAt
+      updatedAt
+      user
+    }
+  }
+`;
+export const createUser = /* GraphQL */ `
+  mutation CreateUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    createUser(input: $input, condition: $condition) {
+      id
+      codeName
+      profile
+      roles
+      portfolios {
+        items {
+          id
+          userID
+          portfolioID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      likes {
+        items {
+          id
+          userID
+          portfolioID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      comments {
+        items {
+          id
+          portfolioID
+          userID
+          content
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      user
+    }
+  }
+`;
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser(
+    $input: UpdateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    updateUser(input: $input, condition: $condition) {
+      id
+      codeName
+      profile
+      roles
+      portfolios {
+        items {
+          id
+          userID
+          portfolioID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      likes {
+        items {
+          id
+          userID
+          portfolioID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      comments {
+        items {
+          id
+          portfolioID
+          userID
+          content
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      user
+    }
+  }
+`;
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    deleteUser(input: $input, condition: $condition) {
+      id
+      codeName
+      profile
+      roles
+      portfolios {
+        items {
+          id
+          userID
+          portfolioID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      likes {
+        items {
+          id
+          userID
+          portfolioID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      comments {
+        items {
+          id
+          portfolioID
+          userID
+          content
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      user
+    }
+  }
+`;
+export const createPortfolioOwner = /* GraphQL */ `
+  mutation CreatePortfolioOwner(
+    $input: CreatePortfolioOwnerInput!
+    $condition: ModelPortfolioOwnerConditionInput
+  ) {
+    createPortfolioOwner(input: $input, condition: $condition) {
+      id
+      userID
+      portfolioID
+      user {
+        id
+        codeName
+        profile
+        roles
+        portfolios {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
+      }
+      portfolio {
+        id
+        users {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        title
+        imageURLs
+        portfolioURL
+        description
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updatePortfolioOwner = /* GraphQL */ `
+  mutation UpdatePortfolioOwner(
+    $input: UpdatePortfolioOwnerInput!
+    $condition: ModelPortfolioOwnerConditionInput
+  ) {
+    updatePortfolioOwner(input: $input, condition: $condition) {
+      id
+      userID
+      portfolioID
+      user {
+        id
+        codeName
+        profile
+        roles
+        portfolios {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
+      }
+      portfolio {
+        id
+        users {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        title
+        imageURLs
+        portfolioURL
+        description
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deletePortfolioOwner = /* GraphQL */ `
+  mutation DeletePortfolioOwner(
+    $input: DeletePortfolioOwnerInput!
+    $condition: ModelPortfolioOwnerConditionInput
+  ) {
+    deletePortfolioOwner(input: $input, condition: $condition) {
+      id
+      userID
+      portfolioID
+      user {
+        id
+        codeName
+        profile
+        roles
+        portfolios {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
+      }
+      portfolio {
+        id
+        users {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        title
+        imageURLs
+        portfolioURL
+        description
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createUserLikePortfolio = /* GraphQL */ `
+  mutation CreateUserLikePortfolio(
+    $input: CreateUserLikePortfolioInput!
+    $condition: ModelUserLikePortfolioConditionInput
+  ) {
+    createUserLikePortfolio(input: $input, condition: $condition) {
+      id
+      userID
+      portfolioID
+      user {
+        id
+        codeName
+        profile
+        roles
+        portfolios {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
+      }
+      portfolio {
+        id
+        users {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        title
+        imageURLs
+        portfolioURL
+        description
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateUserLikePortfolio = /* GraphQL */ `
+  mutation UpdateUserLikePortfolio(
+    $input: UpdateUserLikePortfolioInput!
+    $condition: ModelUserLikePortfolioConditionInput
+  ) {
+    updateUserLikePortfolio(input: $input, condition: $condition) {
+      id
+      userID
+      portfolioID
+      user {
+        id
+        codeName
+        profile
+        roles
+        portfolios {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
+      }
+      portfolio {
+        id
+        users {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        title
+        imageURLs
+        portfolioURL
+        description
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteUserLikePortfolio = /* GraphQL */ `
+  mutation DeleteUserLikePortfolio(
+    $input: DeleteUserLikePortfolioInput!
+    $condition: ModelUserLikePortfolioConditionInput
+  ) {
+    deleteUserLikePortfolio(input: $input, condition: $condition) {
+      id
+      userID
+      portfolioID
+      user {
+        id
+        codeName
+        profile
+        roles
+        portfolios {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
+      }
+      portfolio {
+        id
+        users {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
+        title
+        imageURLs
+        portfolioURL
+        description
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
       }
       createdAt
       updatedAt
@@ -176,22 +599,44 @@ export const createComment = /* GraphQL */ `
   ) {
     createComment(input: $input, condition: $condition) {
       id
-      postID
-      post {
+      portfolioID
+      userID
+      portfolio {
         id
+        users {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
         title
-        blogID
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
+        imageURLs
+        portfolioURL
+        description
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
+      }
+      user {
+        id
+        codeName
+        profile
+        roles
+        portfolios {
+          nextToken
+        }
+        likes {
+          nextToken
         }
         comments {
           nextToken
         }
         createdAt
         updatedAt
+        user
       }
       content
       createdAt
@@ -206,22 +651,44 @@ export const updateComment = /* GraphQL */ `
   ) {
     updateComment(input: $input, condition: $condition) {
       id
-      postID
-      post {
+      portfolioID
+      userID
+      portfolio {
         id
+        users {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
         title
-        blogID
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
+        imageURLs
+        portfolioURL
+        description
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
+      }
+      user {
+        id
+        codeName
+        profile
+        roles
+        portfolios {
+          nextToken
+        }
+        likes {
+          nextToken
         }
         comments {
           nextToken
         }
         createdAt
         updatedAt
+        user
       }
       content
       createdAt
@@ -236,22 +703,44 @@ export const deleteComment = /* GraphQL */ `
   ) {
     deleteComment(input: $input, condition: $condition) {
       id
-      postID
-      post {
+      portfolioID
+      userID
+      portfolio {
         id
+        users {
+          nextToken
+        }
+        likes {
+          nextToken
+        }
         title
-        blogID
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
+        imageURLs
+        portfolioURL
+        description
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        user
+      }
+      user {
+        id
+        codeName
+        profile
+        roles
+        portfolios {
+          nextToken
+        }
+        likes {
+          nextToken
         }
         comments {
           nextToken
         }
         createdAt
         updatedAt
+        user
       }
       content
       createdAt
