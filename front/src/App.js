@@ -1,6 +1,7 @@
 import React from "react";
 import PortfolioList from './screens/index/portfolios'
 import Detail from './screens/detail/detail'
+import PortfolioForm from './screens/createPortfolio/portfolioForm'
 // import Header from './screens/header/header'
 import {
   BrowserRouter as Router,
@@ -21,6 +22,9 @@ export default function App() {
           </Route>
           <Route path="/portfolio_detail/:portfolioId">
             <Detail />
+          </Route>
+          <Route path="/create">
+            <PortfolioForm/>
           </Route>
           <Route path="/">
             <Hello />
