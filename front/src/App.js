@@ -1,7 +1,7 @@
 import React from "react";
-import PortfolioList from './screens/index/portfolios'
-import Detail from './screens/detail/detail'
-import PortfolioForm from './screens/createPortfolio/portfolioForm'
+import PortfolioList from 'screens/index/portfolios'
+import Detail from 'screens/detail/detail'
+import PortfolioForm from 'screens/createPortfolio/portfolioForm'
 // import Header from './screens/header/header'
 import {
   BrowserRouter as Router,
