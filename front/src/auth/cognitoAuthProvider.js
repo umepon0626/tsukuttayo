@@ -13,7 +13,7 @@
 // signOut	サインアウトする。
 // -------------------------------------------------------
 
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Amplify, { Auth } from 'aws-amplify'
 
 const initialContext = {
@@ -121,3 +121,5 @@ const CognitoAuthProvider = (props) => {
     </AuthContext.Provider>
   )
 }
+
+export default CognitoAuthProvider;

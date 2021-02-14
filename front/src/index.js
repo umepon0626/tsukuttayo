@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import CognitoAuthProvider from 'auth/cognitoAuthProvider'
+import awsconfig from "aws-exports";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CognitoAuthProvider amplifyConfig={awsconfig}>
+      <App />
+    </CognitoAuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
